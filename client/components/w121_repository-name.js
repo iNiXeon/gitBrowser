@@ -4,7 +4,7 @@ import React from 'react'
 const RepositoryName = (props) => {
   return (
     <div className="text-teal-900 text-left">
-      {/* <Markdown id="description">{props.text}</Markdown> */}
+      <Markdown id="description">{props.text}</Markdown> 
       MARKDOWN HERE
       {props.text[0]}
     </div>
