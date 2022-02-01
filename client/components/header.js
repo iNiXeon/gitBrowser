@@ -21,7 +21,7 @@ const Header = () => {
           className="font-semibold text-xl tracking-tight"
           onClick={() => toggle(!toggled)}
         >
-          Показать меню
+          {!toggled ? "Показать меню" : "Cкрыть меню"}
         </button>
       </div>
       {toggled && (
