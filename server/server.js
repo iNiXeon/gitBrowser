@@ -178,7 +178,7 @@ const deleteFile = async (pathToFile) => {
     .then(async () => {
       await unlink(pathToFile)
         .then(async () => {
-          response = { status: 'file deleted' }
+          response = { status: 'success' }
         })
         .catch((err) => {
           response = err
