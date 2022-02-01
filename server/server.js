@@ -27,19 +27,15 @@ let connections = []
 const port = process.env.PORT || 8090
 const server = express()
 
-// const setHeaders = (req, res, next) => {
-//   res.setHeaders('x-skillcrucial-user', '5b7a818e-af0f-4f2c-bba0-21b400fe5cbc')
-//   res.setHeaders('Access-Control-Expose-Headers', 'X-SKILLCRUCIAL-USER')
-//   next()
-// }
+const setHeaders = (req, res, next) => {
+  res.set('x-skillcrucial-user', '5b7a818e-af0f-4f2c-bba0-21b400fe5cbc')
+  res.set('Access-Control-Expose-Headers', 'X-SKILLCRUCIAL-USER')
+  next()
+}
 
 const middleware = [
   cors(),
-  (req, res, next) => {
-    res.set('x-skillcrucial-user', '5b7a818e-af0f-4f2c-bba0-21b400fe5cbc')
-    res.set('Access-Control-Expose-Headers', 'X-SKILLCRUCIAL-USER')
-    next()
-  },
+  setHeaders,
   express.static(path.resolve(__dirname, '../dist/assets')),
   bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }),
   bodyParser.json({ limit: '50mb', extended: true }),
@@ -48,7 +44,6 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-// const echo = sockjs.createServer(setHeaders)
 const echo = sockjs.createServer()
 echo.on('connection', (conn) => {
   connections.push(conn)
