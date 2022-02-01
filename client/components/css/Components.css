@@ -1,0 +1,48 @@
+.component {
+  min-height: 100vh;
+  color: white;
+  background-color: #282c34;
+  padding: 2vh;
+}
+
+.component-header {
+  min-height: 10vh;
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-size: calc(10px + 2vmin);
+}
+
+.component-searchtool__input{
+  min-width: 50vh;
+  color: black;
+}
+
+.component-searchtool__button{
+  margin: 5px;
+  min-width: 10vh;
+  background-color: darkslateblue;
+}
+
+.component-repositorieslist{
+  text-align: left;
+  min-height: 100vh;
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: calc(10px + 2vmin);
+}
+
+.component-readme {
+  min-height: 100vh;
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  font-size: calc(10px + 2vmin);
+}

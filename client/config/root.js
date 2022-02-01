@@ -1,87 +1,33 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
-import { Switch, Route, Redirect, StaticRouter } from 'react-router-dom'
-
+import { Switch, Route, StaticRouter } from 'react-router-dom'
 import store, { history } from '../redux'
 
-import Home from '../components/w121_home'
-import DummyView from '../components/dummy-view'
 import NotFound from '../components/404'
-
+import App from '../components/App'
+import Repository from '../components/Repository'
+import Readme from '../components/Readme'
 import Startup from './startup'
 
-const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
-  const func = (props) =>
-    !!rest.user && !!rest.user.name && !!rest.token ? (
-      <Redirect to={{ pathname: '/' }} />
-    ) : (
-      <Component {...props} />
-    )
-  return <Route {...rest} render={func} />
-}
-
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const func = (props) =>
-    !!rest.user && !!rest.user.name && !!rest.token ? (
-      <Component {...props} />
-    ) : (
-      <Redirect
-        to={{
-          pathname: '/login'
-        }}
-      />
-    )
-  return <Route {...rest} render={func} />
-}
-
-const types = {
-  component: PropTypes.func.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string
-  }),
-  user: PropTypes.shape({
-    name: PropTypes.string,
-    email: PropTypes.string
-  }),
-  token: PropTypes.string
-}
-
-const defaults = {
-  location: {
-    pathname: ''
-  },
-  user: null,
-  token: ''
-}
-
-OnlyAnonymousRoute.propTypes = types
-PrivateRoute.propTypes = types
-
-PrivateRoute.defaultProps = defaults
-OnlyAnonymousRoute.defaultProps = defaults
-
-const ScillcrucialRouter = (props) =>
+const RouterSelector = (props) =>
   typeof window !== 'undefined' ? <ConnectedRouter {...props} /> : <StaticRouter {...props} />
 
-const Root = (props) => {
+const RootComponent = (props) => {
   return (
     <Provider store={store}>
-      <ScillcrucialRouter history={history} location={props.location} context={props.context}>
+      <RouterSelector history={history} location={props.location} context={props.context}>
         <Startup>
           <Switch>
-            <Route exact path="/" component={() => <Home />} />
-            <Route exact path="/:username" component={() => <Home />} />
-            <Route exact path="/:username/:repositoryname" component={() => <Home />} />
-            <PrivateRoute exact path="/hidden-route" component={() => <DummyView />} />
-            <Route component={() => <NotFound />} />
+            <Route exact path="/" component={App} />
+            <Route exact path="/:userName" component={Repository} />
+            <Route exact path="/:userName/:repositoryName" component={Readme} />
+            <Route component={NotFound} />
           </Switch>
         </Startup>
-      </ScillcrucialRouter>
+      </RouterSelector>
     </Provider>
   )
 }
 
-export default Root
+export default RootComponent
