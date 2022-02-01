@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import { push } from 'connected-react-router'
-import { useDispatch } from 'react-redux'
 
 const Header = () => {
-  const dispatch = useDispatch()
   const [toggled, toggle] = useState(false)
 
   return (
@@ -33,7 +30,7 @@ const Header = () => {
             type="button"
             className="flex items-center px-3 py-2 border rounded text-gray-700 border-gray-700 hover:text-white hover:border-white"
             onClick={() => {
-              dispatch(push('https://www.google.com/'))
+              window.location.replace('https://www.google.com/')
             }}
           >
             <svg
