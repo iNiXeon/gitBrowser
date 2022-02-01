@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom'
 const DashboardProfile = () => {
   const { user } = useParams()
   return (
-    <div>
+    <div className='profile'>
       <div id="title">Profile</div>
       <div id="username">{user}</div>
-      <a href="/dashboard">Go To Root</a>
-      <a href="/dashboard/main">Go To Main</a>
+      <div>
+        <a href="/dashboard/main">Go To Main</a>
+        <a href="/dashboard">Go To Root</a>
+      </div>
     </div>
   )
 }

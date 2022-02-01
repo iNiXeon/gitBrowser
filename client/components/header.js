@@ -25,23 +25,15 @@ const Header = () => {
         </button>
       </div>
       {toggled && (
-        <div id="menu" className="block">
-          <button
-            type="button"
-            className="flex items-center px-3 py-2 border rounded text-gray-700 border-gray-700 hover:text-white hover:border-white"
-            onClick={() => {
-              window.location.replace('https://www.google.com/')
-            }}
-          >
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        <div id="menu" className="block bg-red-400">
+          <a href="https://google.com" className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+            <svg className="fill-current h-5 w-5" viewBox="0 0 7 7">
+              <path d="M 0 2 L 8 1 L 8 2 L 0 3 L 0 2 M 0 4 L 8 3 L 8 4 L 0 5 L 0 4 M 0 6 L 8 5 L 8 6 L 0 7 L 0 6"/>
+              <title>
+                Menu
+              </title>
             </svg>
-          </button>
+          </a>
         </div>
       )}
     </nav>
