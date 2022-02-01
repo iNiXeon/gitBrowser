@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { history } from '../redux'
+import { push } from 'connected-react-router'
+import { useDispatch } from 'react-redux'
 import './css/Components.css'
 
 const App = () => {
+  const dispatch = useDispatch()
   const [user, setUser] = useState('')
   const onInputChange = (e) => {
     setUser(e.target.value.trim(''))
   }
 
   const OnClickButton = async () => {
-    history.push({
-      pathname: `/${user}`
-    })
+    dispatch(push(`/${user}`))
   }
 
   return (
