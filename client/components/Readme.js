@@ -9,7 +9,7 @@ const Repository = () => {
   const [readmeText, setReadmeText] = useState('')
 
   useEffect(() => {
-    setReadmeText(`#Not found`)
+    setReadmeText(`loading...`)
     const urlRepository = `https://api.github.com/repos/${userName}/${repositoryName}/readme`
     axios(urlRepository).then((it) => {
       axios(it.data.download_url).then((text) => {
@@ -17,6 +17,9 @@ const Repository = () => {
           setReadmeText(text.data)
         }
       })
+    })
+    .catch(() => {
+      setReadmeText("not found")
     })
   }, [userName, repositoryName])
 
