@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const DashboardProfile = () => {
   const { user } = useParams()
@@ -7,12 +7,8 @@ const DashboardProfile = () => {
     <div>
       <div id="title">Profile</div>
       <div id="username">{user}</div>
-      <div>
-        <Link to="/dashboard">Go To Root</Link>
-      </div>
-      <div>
-        <Link to="/dashboard/main">Go To Main</Link>
-      </div>
+      <a href="/dashboard">Go To Root</a>
+      <a href="/dashboard/main">Go To Main</a>
     </div>
   )
 }

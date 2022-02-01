@@ -1,16 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const DashboardMain = () => {
   return (
     <div>
       <div id="title">Main</div>
-      <div>
-        <Link to="/dashboard/profile/5b7a818e-af0f-4f2c-bba0-21b400fe5cbc">Go To Profile</Link>
-      </div>
-      <div>
-        <Link to="/dashboard">Go To Root</Link>
-      </div>
+      <a href="/dashboard/profile/5b7a818e-af0f-4f2c-bba0-21b400fe5cbc">Go To Profile</a>
+      <a href="/dashboard">Go To Root</a>
     </div>
   )
 }
