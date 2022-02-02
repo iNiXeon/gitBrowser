@@ -22,8 +22,7 @@ const RootComponent = (props) => {
           <Switch>
             <Route exact path="/" component={App} />
             <Route exact path="/dashboard" component={() => <Home />} />
-            <Route exact path="/dashboard/main" component={() => <Home />} />
-            <Route exact path="/dashboard/profile/:user" component={() => <Home />} />
+            <Route exact path="/dashboard/*" component={() => <Home />} />
             <Route exact path="/:userName" component={Repository} />
             <Route exact path="/:userName/:repositoryName" component={Readme} />
             <Route component={NotFound} />

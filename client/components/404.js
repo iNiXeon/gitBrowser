@@ -17,11 +17,23 @@ const NotFound = () => {
           type="button"
           tabIndex="0"
           onClick={() => {
+            dispatch(push('/dashboard'))
+          }}
+        >
+          {' '}
+          Dashboard
+        </button>
+        <br />
+        <button
+          className="btn btn-secondary btn-lg"
+          type="button"
+          tabIndex="0"
+          onClick={() => {
             dispatch(push('/'))
           }}
         >
           {' '}
-          Back to Dashboard
+          Back to /
         </button>
       </div>
     </div>
